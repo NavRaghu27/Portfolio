@@ -1,4 +1,4 @@
-# 👨‍💻 Personal Portfolio - Navaneeth R
+# 👨‍💻 Personal Portfolio - Navaneeth R  
 
 ![Project Status](https://img.shields.io/badge/Status-Live-success)
 ![Design](https://img.shields.io/badge/Design-Glassmorphism-blueviolet)
