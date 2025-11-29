@@ -3,186 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navaneeth R | Senior Software Engineer</title>
+    <title>Navaneeth R | Full Stack & DevOps</title>
     <style>
-        /* --- GLOBAL VARIABLES & RESET --- */
+        /* --- 1. CORE VARIABLES & RESET --- */
         :root {
-            --bg-color: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --accent: #38bdf8;
-            --text-main: #f1f5f9;
+            --bg-dark: #020617;
+            --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
-            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --accent-cyan: #22d3ee;
+            --accent-purple: #a855f7;
+            --glass-bg: rgba(30, 41, 59, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Inter', system-ui, sans-serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             font-family: var(--font-main);
-            line-height: 1.6;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 20%),
-                              radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 20%);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(34, 211, 238, 0.08), transparent 25%);
         }
 
-        /* --- LAYOUT UTILITIES --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section { padding: 80px 0; }
-
-        h1, h2, h3 { color: var(--text-main); margin-bottom: 1rem; }
-        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; position: relative; }
-        h2::after {
-            content: ''; display: block; width: 60px; height: 4px;
-            background: var(--accent); margin: 10px auto 0; border-radius: 2px;
-        }
-
-        /* --- GLASSMORPHISM CARD STYLE --- */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border-color: var(--accent);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            flex-direction: column;
-        }
-
-        .hero h1 { font-size: 4rem; font-weight: 800; letter-spacing: -2px; }
-        .hero span { color: var(--accent); }
-        .hero p { font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; }
+        /* --- 2. ANIMATIONS & UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 100px 0; }
         
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--accent);
-            color: var(--bg-color);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: opacity 0.3s;
-        }
-        .btn:hover { opacity: 0.9; }
+        /* Scroll Reveal Animation Classes */
+        .hidden { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+        .show { opacity: 1; transform: translateY(0); }
 
-        /* --- SKILLS GRID --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-        .skill-item h3 { font-size: 1.2rem; color: var(--accent); }
-        .skill-item p { font-size: 0.95rem; color: var(--text-secondary); }
-
-        /* --- EXPERIENCE TIMELINE --- */
-        .timeline { border-left: 2px solid var(--glass-border); margin-left: 20px; padding-left: 40px; }
-        .timeline-item { margin-bottom: 40px; position: relative; }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -49px; top: 5px;
-            width: 16px; height: 16px; background: var(--accent);
-            border-radius: 50%; box-shadow: 0 0 10px var(--accent);
-        }
-        .date { font-size: 0.9rem; color: var(--accent); font-weight: bold; margin-bottom: 0.5rem; display: block; }
-
-        /* --- PROJECT GRID --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .metric {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 5px 10px;
-            background: rgba(56, 189, 248, 0.2);
-            color: var(--accent);
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: bold;
+        /* Text Gradient */
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        /* --- CONTACT --- */
-        .contact-box { text-align: center; max-width: 600px; margin: 0 auto; }
-        .contact-link { color: var(--accent); text-decoration: none; font-size: 1.2rem; display: block; margin: 10px 0; }
+        /* --- 3. NAV BAR --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border);
+            background: rgba(2, 6, 23, 0.7);
+        }
+        .nav-content {
+            display: flex; justify-content: space-between; align-items: center; height: 70px;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; margin-left: 30px;
+            font-size: 0.9rem; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-cyan); }
 
-        /* --- FOOTER --- */
-        footer { text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--glass-border); }
+        /* --- 4. HERO SECTION WITH TYPING ANIMATION --- */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative;
+        }
+        .hero h1 {
+            font-size: 4.5rem; font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px;
+        }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; }
+        
+        /* Typing Cursor Effect */
+        .typing-container { display: inline-block; }
+        .typing-text { border-right: 4px solid var(--accent-cyan); white-space: nowrap; overflow: hidden; animation: blink 0.75s step-end infinite; }
+        @keyframes blink { 50% { border-color: transparent; } }
 
+        .btn-glow {
+            padding: 16px 40px; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            color: white; border-radius: 50px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); transition: transform 0.3s;
+        }
+        .btn-glow:hover { transform: scale(1.05); }
+
+        /* --- 5. METRICS BAR (STATS) --- */
+        .stats-bar {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+            background: var(--glass-bg); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
+            padding: 40px 0; margin-top: -80px; position: relative; z-index: 10;
+        }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--accent-cyan); display: block; }
+        .stat-label { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- 6. CARDS (EXPERIENCE & PROJECTS) --- */
+        .section-title { font-size: 2.5rem; margin-bottom: 60px; text-align: center; }
+        
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+        .glass-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            padding: 30px; border-radius: 20px; transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .glass-card:hover {
+            transform: translateY(-10px); border-color: var(--accent-purple);
+            box-shadow: 0 10px 40px -10px rgba(168, 85, 247, 0.2);
+        }
+        
+        .card-date { color: var(--accent-cyan); font-size: 0.85rem; font-weight: bold; margin-bottom: 10px; display: block; }
+        .card-tech { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .tech-tag {
+            font-size: 0.75rem; padding: 5px 12px; border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+        }
+
+        /* --- 7. SKILLS PROGRESS --- */
+        .skill-row { margin-bottom: 25px; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); width: 0; transition: width 1.5s ease-out; }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">Navaneeth<span style="color:var(--accent-cyan)">.dev</span></div>
+            <div class="nav-links">
+                <a href="#about">Stats</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+            </div>
+        </div>
+    </nav>
+
     <header class="hero">
         <div class="container">
-            <h1>Hi, I'm <span>Navaneeth R</span></h1>
-            <p>Senior Software Engineer specializing in scalable microservices, Angular, and AWS.</p>
-            <a href="mailto:raghunava30@gmail.com" class="btn">Get In Touch</a>
+            <h1 class="hidden">Architecting <br><span class="gradient-text">Scalable Solutions</span></h1>
+            <p class="hidden">Senior Software Engineer | Angular 19 | AWS Microservices | Laravel  | FastAPI</p>
+            <div class="typing-container hidden">
+                <a href="mailto:raghunava30@gmail.com" class="btn-glow">Hire Me</a>
+            </div>
         </div>
     </header>
 
-    <section id="skills">
-        <div class="container">
-            <h2>Technical Arsenal</h2>
-            <div class="skills-grid">
-                <div class="glass-card skill-item">
-                    <h3>Frontend</h3>
-                    <p>Angular 17, TypeScript, HTML5, CSS3, JavaScript</p>
-                </div>
-                <div class="glass-card skill-item">
-                    <h3>Backend</h3>
-                    <p>FastAPI, Laravel, PHP, Node.js, RESTful APIs</p>
-                </div>
-                <div class="glass-card skill-item">
-                    <h3>Cloud & DevOps</h3>
-                    <p>AWS (Lambda, SES, S3, EC2), Jenkins, Git, SQL</p>
-                </div>
-            </div>
+    <div class="stats-bar hidden" id="about">
+        <div class="stat-item">
+            <span class="stat-number">30%</span>
+            <span class="stat-label">Performance Boost </span>
         </div>
-    </section>
+        <div class="stat-item">
+            <span class="stat-number">50%</span>
+            <span class="stat-label">Faster Deployments </span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">3x</span>
+            <span class="stat-label">Speed (60s to 18s) </span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Years Experience [cite: 25]</span>
+        </div>
+    </div>
 
     <section id="experience">
         <div class="container">
-            <h2>Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="date">Sept 2022 - Present</span>
+            <h2 class="section-title hidden">Work History</h2>
+            <div class="card-grid">
+                <div class="glass-card hidden">
+                    <span class="card-date">Sept 2022 - Present</span>
                     <h3>Senior Software Engineer</h3>
-                    <h4>MyDigital Accounts | Chennai</h4>
-                    <p style="margin-top: 10px; color: var(--text-secondary);">
-                        Led the migration of a critical legacy application to Angular 17 and designed scalable microservices.
-                    </p>
-                    <br>
-                    <ul style="padding-left: 20px; color: var(--text-secondary);">
-                        <li>Migrated legacy app to Angular 17, achieving <strong>30% performance improvement</strong>.</li>
-                        <li>Implemented microservices with AWS Lambda/SES, reducing deployment time by 50%.</li>
-                        <li>Developed reusable component libraries for consistency.</li>
+                    <p style="color:var(--text-secondary)">MyDigital Accounts [cite: 8]</p>
+                    <ul style="margin-top:15px; padding-left:20px; color:var(--text-secondary); line-height:1.6">
+                        <li>Led migration of legacy app to <strong>Angular 17</strong>[cite: 12].</li>
+                        <li>Built cloud microservices using <strong>AWS Lambda & SES</strong>[cite: 13].</li>
+                        <li>Troubleshooted complex issues & mentored teams[cite: 15].</li>
                     </ul>
+                    <div class="card-tech">
+                        <span class="tech-tag">Angular 17</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Laravel</span>
+                    </div>
+                </div>
+
+                <div class="glass-card hidden">
+                    <span class="card-date">July 2018 - May 2022</span>
+                    <h3>Software Engineer</h3>
+                    <p style="color:var(--text-secondary)">Trust ID Projects [cite: 25]</p>
+                    <ul style="margin-top:15px; padding-left:20px; color:var(--text-secondary); line-height:1.6">
+                        <li>Developed microservices for Trust ID Authentication[cite: 24].</li>
+                        <li>Optimized async API integration for bulk emails[cite: 28].</li>
+                        <li>Handled large datasets with robust techniques[cite: 29].</li>
+                    </ul>
+                    <div class="card-tech">
+                        <span class="tech-tag">Microservices</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,44 +211,112 @@
 
     <section id="projects">
         <div class="container">
-            <h2>Key Projects</h2>
-            <div class="project-grid">
-                <div class="glass-card">
+            <h2 class="section-title hidden">Featured Projects</h2>
+            <div class="card-grid">
+                <div class="glass-card hidden">
                     <h3>Task Orchestrator</h3>
-                    <p style="margin-top: 10px; color: var(--text-secondary);">
-                        A high-load processing system using FastAPI and AWS SQS for background task management.
+                    <p style="color:var(--text-secondary); margin-top:10px;">
+                        A high-load processing system designed to handle time-intensive tasks efficiently[cite: 31].
                     </p>
-                    <span class="metric">Reduced payroll calculation from 60s to 18s</span>
-                    <span class="metric">Chunk-based parallel processing</span>
+                    <div style="margin-top:15px; border-left: 2px solid var(--accent-cyan); padding-left: 10px;">
+                        <p style="font-size:0.9rem">
+                            <em>"Optimized payroll calculation from 60s to 18s using chunk-based parallel processing."</em> 
+                        </p>
+                    </div>
+                    <div class="card-tech">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">AWS SQS</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
                 </div>
 
-                <div class="glass-card">
-                    <h3>Modernizing Trust ID Auth</h3>
-                    <p style="margin-top: 10px; color: var(--text-secondary);">
-                        Streamlined authentication flows using AWS Lambda and efficient bulk email processing with AWS SES.
+                <div class="glass-card hidden">
+                    <h3>Trust ID Modernization</h3>
+                    <p style="color:var(--text-secondary); margin-top:10px;">
+                        Secure authentication flow integrating AWS SES for compliance verification emails[cite: 27].
                     </p>
-                    <span class="metric">Secure verification emails</span>
-                    <span class="metric">Optimized Async API Integration</span>
+                    <div style="margin-top:15px; border-left: 2px solid var(--accent-purple); padding-left: 10px;">
+                        <p style="font-size:0.9rem">
+                            <em>"Streamlined auth flow using AWS Lambda and serverless architecture."</em> [cite: 26]
+                        </p>
+                    </div>
+                    <div class="card-tech">
+                        <span class="tech-tag">AWS Lambda</span>
+                        <span class="tech-tag">SES</span>
+                        <span class="tech-tag">Security</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="skills">
         <div class="container">
-            <div class="glass-card contact-box">
-                <h2>Let's Collaborate</h2>
-                <p>Open to opportunities in Full-Stack Development and Cloud Architecture.</p>
-                <br>
-                <a href="mailto:raghunava30@gmail.com" class="contact-link">raghunava30@gmail.com</a>
-                <a href="tel:+919786655137" class="contact-link">+91 978 665 5137</a>
+            <h2 class="section-title hidden">Technical Arsenal</h2>
+            <div class="glass-card hidden" style="max-width: 800px; margin: 0 auto;">
+                
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span>Angular 17 / TypeScript</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
+                </div>
+
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span>AWS (Lambda, S3, SES)</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+                </div>
+
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span>Laravel / PHP</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+                </div>
+
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span>FastAPI / Python</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div>
+                </div>
+
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span>DevOps (Jenkins, Git)</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>Designed by Navaneeth R | Built with Glassmorphism CSS</p>
+    <footer style="text-align:center; padding: 40px; border-top: 1px solid var(--glass-border); color: var(--text-secondary);">
+        <p>Navaneeth R | <a href="mailto:raghunava30@gmail.com" style="color:var(--accent-cyan); text-decoration:none;">raghunava30@gmail.com</a></p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">Chennai, India</p>
     </footer>
 
+    <script>
+        // Use Intersection Observer to trigger animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                console.log(entry)
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
